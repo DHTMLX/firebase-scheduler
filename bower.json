@@ -16,6 +16,7 @@
   "license": "MIT",
   "ignore": [
     "bower_components",
+    "samples",
     "samples/*"
   ]
 }
