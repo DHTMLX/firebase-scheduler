@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>dhtmlxScheduler firebase</title>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <script src="../source/dhtmlx_scheduler/sources/dhtmlxscheduler.js"></script>
-    <link rel="stylesheet" href="../source/dhtmlx_scheduler/sources/skins/dhtmlxscheduler.css">
-    <script type="text/javascript" src="../../source/dhtmlx_scheduler_firebase.js"></script>
+    <script src="source/dhtmlx_scheduler/sources/dhtmlxscheduler.js"></script>
+    <link rel="stylesheet" href="source/dhtmlx_scheduler/sources/skins/dhtmlxscheduler.css">
+    <script type="text/javascript" src="../source/dhtmlx_scheduler_firebase.js"></script>
 </head>
 <body>
 
@@ -32,15 +32,8 @@
     //Init scheduler.
     scheduler.init("scheduler_here");
 
-    //Load from first collection.
+    //Load from collection.
     scheduler.firebase(data.child("events"));
-
-    //Reload from second collection after 3 second after load.
-    setTimeout(function() {
-        scheduler.firebaseStop();
-        scheduler.clearAll();
-        scheduler.firebase(data.child("events_2"));
-    }, 3000);
 
 </script>
 </body>
