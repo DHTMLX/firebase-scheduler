@@ -17,7 +17,8 @@ Include dhtmlxScheduler and Firebase files on the page
 
 ```html
 <!-- dhtmlxScheduler -->
-<!-- ... -->
+<script src="../source/dhtmlx_scheduler/sources/dhtmlxscheduler.js"></script>
+<link rel="stylesheet" href="../source/dhtmlx_scheduler/sources/skins/dhtmlxscheduler.css">
 
 <!-- dhtmlxScheduler-Firebase adapter -->
 <script type="text/javascript" src="../source/dhtmlx_scheduler_firebase.js"></script>

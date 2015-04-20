@@ -29,6 +29,7 @@
 <script type="text/javascript">
     var data = new Firebase("https://dhtmlxschedulertest.firebaseio.com");
 
+    //Init scheduler.
     scheduler.init("scheduler_here");
 
     //Load from first collection.
@@ -36,6 +37,7 @@
 
     //Reload from second collection after 3 second after load.
     setTimeout(function() {
+        scheduler.firebaseStop();
         scheduler.clearAll();
         scheduler.firebase(data.child("events_2"));
     }, 3000);

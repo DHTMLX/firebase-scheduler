@@ -13,5 +13,8 @@
     "scheduler",
     "scheduler-firebase"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "ignore": [
+    "bower_components"
+  ]
 }
