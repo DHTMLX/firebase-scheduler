@@ -9,22 +9,23 @@ When data changes, apps built with Firebase update instantly across every device
 
 Firebase-powered apps work offline. Data is synchronized instantly when your app regains connectivity.
 
-
-How to use
+Cloud Firestore
 -----------
+
 
 Include dhtmlxScheduler and Firebase files on the page
 
 ```html
 <!-- dhtmlxScheduler -->
-<script src="../source/dhtmlx_scheduler/sources/dhtmlxscheduler.js"></script>
-<link rel="stylesheet" href="../source/dhtmlx_scheduler/sources/skins/dhtmlxscheduler.css">
+<script src="//cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
+<link rel="stylesheet" href="//cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css">
 
 <!-- dhtmlxScheduler-Firebase adapter -->
 <script type="text/javascript" src="../source/dhtmlx_scheduler_firebase.js"></script>
 
 <!-- FireBase -->
-<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
 ```
 Create html for dhtmlxScheduler
 
@@ -54,10 +55,75 @@ Init dhtmlxScheduler
 Create firebase connection and set this to scheduler
 
 ```js
-    var data = new Firebase("https://dhtmlxschedulertest.firebaseio.com"),
-        events = data.child("events");
+    firebase.initializeApp({
+        apiKey: "APP KEY HERE",
+        projectId: "scheduler-firebase"
+    });
+    var db = firebase.firestore();
+    db.settings({ timestampsInSnapshots:true });
 
-    scheduler.firebase(events);
+    scheduler.firebase(db.collection("events"));
+```
+
+Stop the data adapter
+
+```js
+    scheduler.firebaseStop();
+```
+
+
+
+Realtime database
+-----------
+
+Include dhtmlxScheduler and Firebase files on the page
+
+```html
+<!-- dhtmlxScheduler -->
+<script src="//cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
+<link rel="stylesheet" href="//cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css">
+
+<!-- dhtmlxScheduler-Firebase adapter -->
+<script type="text/javascript" src="../source/dhtmlx_scheduler_firebase.js"></script>
+
+<!-- FireBase -->
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+```
+Create html for dhtmlxScheduler
+
+```html
+    <div id="scheduler_here" class="dhx_cal_container" style="width: 100%; height: 500px;">
+        <div class="dhx_cal_navline">
+            <div class="dhx_cal_prev_button">&nbsp;</div>
+            <div class="dhx_cal_next_button">&nbsp;</div>
+            <div class="dhx_cal_today_button"></div>
+            <div class="dhx_cal_date"></div>
+            <div class="dhx_cal_tab" name="day_tab" style="right: 332px;"></div>
+            <div class="dhx_cal_tab" name="week_tab" style="right: 268px;"></div>
+            <div class="dhx_cal_tab" name="month_tab" style="right: 204px;"></div>
+            <div class="dhx_cal_tab" name="year_tab" style="right: 140px;"></div>
+        </div>
+        <div class="dhx_cal_header"></div>
+        <div class="dhx_cal_data"></div>
+    </div>
+```
+
+Init dhtmlxScheduler
+
+```js
+    scheduler.init("scheduler_here");
+```
+
+Create firebase connection and set this to scheduler
+
+```js
+    firebase.initializeApp({
+        databaseURL: "https://scheduler-firebase.firebaseio.com/"
+    });
+    var db = firebase.database();
+
+    scheduler.firebase(data.ref("events"));
 ```
 
 Stop the data adapter
