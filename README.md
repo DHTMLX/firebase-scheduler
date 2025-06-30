@@ -1,7 +1,16 @@
 Firebase adapter for dhtmlxScheduler
 =============================
 
-Library allows using [dhtmlxScheduler](http://dhtmlx.com/docs/products/dhtmlxScheduler) components with [FireBase](https://firebase.com/)
+**This repository is no longer maintained.**
+
+For a modern, client-side integration of **DHTMLX Scheduler** with **Firebase** please see the actively 
+supported demo here:
+
+[https://github.com/DHTMLX/firebase-scheduler-demo](https://github.com/DHTMLX/firebase-scheduler-demo)
+
+---
+
+Library allows using [DHTMLX Scheduler](http://dhtmlx.com/docs/products/dhtmlxScheduler) components with [FireBase](https://firebase.com/)
 
 Citing the Firebase site:
 
